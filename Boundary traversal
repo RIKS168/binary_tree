@@ -1,0 +1,57 @@
+class Solution {
+public:
+      void traversalleft(Node* root , vector<int> &ans){
+          if( (root==NULL )||(root->left==NULL && root->right==NULL))
+          return;
+          
+          ans.push_back(root->data);
+          
+          if(root->left)
+         traversalleft(root->left, ans);
+          else
+           traversalleft(root->right, ans);
+          
+      }
+    void traversalleaf(Node* root , vector<int>& ans){
+    if(root==NULL)return;
+    
+    if(root->left==NULL && root->right==NULL){
+    ans.push_back(root->data);
+    return;
+    }
+    traversalleaf(root->left, ans);
+    traversalleaf(root->right, ans);
+}
+
+   void traversalright(Node* root, vector<int>& ans){
+       if((root==NULL)|| (root->left==NULL && root->right==NULL)) 
+       return;
+       
+       if(root->right)
+       traversalright(root->right, ans);
+       else
+       traversalright(root->left , ans);
+       
+       
+       ans.push_back(root->data);
+   }
+
+    vector <int> boundary(Node *root)
+    {
+       vector<int>ans;
+       if(root==NULL)return ans;
+       ans.push_back(root->data);
+       
+       traversalleft(root->left , ans);
+    
+       traversalleaf(root->left, ans);
+       traversalleaf(root->right, ans);
+      
+        
+        
+        //traverse right part
+      traversalright(root->right, ans);
+        
+        return ans;
+    }
+};
