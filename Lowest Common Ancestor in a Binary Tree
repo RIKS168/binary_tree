@@ -2,6 +2,9 @@ class Solution
 {
     public:
     //Function to return the lowest common ancestor in a Binary Tree.
+
+//tc = o(n)
+//sc = o(h)
     Node* lca(Node* root ,int n1 ,int n2 )
     {
       if(root==NULL){
